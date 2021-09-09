@@ -2,7 +2,7 @@ from qiniu import Auth,BucketManager,put_data
 
 access_key = "hVeOAldZ7OdLUTA8Wyunu2oeCPGhOlGqpIHOhF_H"
 secret_key = "nH9k4WvK4xfSLWqDwDdqFVx2CVcJf59iI0KzAQCp"
-BASE_URL = "http://qwuj9bu2d.hb-bkt.clouddn.com/"
+BASE_URL = "http://cache.lhananld.xyz/"
 
 def get_qiu_auth():
     return Auth(access_key, secret_key)
