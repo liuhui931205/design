@@ -26,7 +26,7 @@ def get_recommend():
     data = []
     for o in results:
         data.append({
-            "imgUrl": o.img_url, "name": o.name, "id": o.ref_code
+            "imgUrl": BASE_URL+o.img_url, "name": o.name, "id": o.ref_code
         })
     resp = jsonify(code=0, data=data, message="查询成功")
     return resp
