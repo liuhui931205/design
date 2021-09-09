@@ -1,0 +1,5 @@
+*.py[cd]
+.idea
+*.DS_Store
+logs
+uwsgi.*
