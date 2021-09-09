@@ -1,4 +1,6 @@
 from sqlalchemy import text
+
+from util.qiniu_auth import BASE_URL
 from . import db
 import math
 import datetime
@@ -30,7 +32,7 @@ class ShuYanRecommend(db.Model):
     sort_num = db.Column(db.Integer, default=1)
 
     def to_dict(self):
-        return {"img_url": self.img_url, "ref_code": self.ref_code, "name": self.name, "id": self.id}
+        return {"img_url": BASE_URL+self.img_url, "ref_code": self.ref_code, "name": self.name, "id": self.id}
 
 
 class ShuYanCommodity(db.Model):
@@ -44,7 +46,7 @@ class ShuYanCommodity(db.Model):
 
 
     def to_dict(self):
-        return {"img_url": self.img_url, "title": self.title, "new_price": self.new_price, "id": self.id,"old_price":self.old_price}
+        return {"img_url": BASE_URL+self.img_url, "title": self.title, "new_price": self.new_price, "id": self.id,"old_price":self.old_price}
 
 class ShuYanCommodityDetail(db.Model):
     # __bind_key__ = "design"
@@ -58,7 +60,7 @@ class ShuYanCommodityDetail(db.Model):
     detail_url = db.Column(db.TEXT(5000))
 
     def to_dict(self):
-        return {"img_urls": self.img_urls.split(","), "title": self.title, "new_price": self.new_price, "id": self.id,"old_price":self.old_price,"detail_url":self.detail_url.split(",")}
+        return {"img_urls": list(map(lambda x:BASE_URL+x, self.img_urls.split(","))), "title": self.title, "new_price": self.new_price, "id": self.id,"old_price":self.old_price,"detail_url":list(map(lambda x:BASE_URL+x, self.detail_url.split(",")))}
 
 
 class ShuYanCommodityStyle(db.Model):
